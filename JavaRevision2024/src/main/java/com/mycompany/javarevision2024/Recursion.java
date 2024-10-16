@@ -11,17 +11,17 @@ package com.mycompany.javarevision2024;
 public class Recursion {
 
     public static void power(int base, int exponent) {
-        int result = powerHelper(base, exponent);
+        double result = powerHelper(base, exponent);
         System.out.println("The power of the number is: " + result);
     }
 
-    private static int powerHelper(int base, int exponent) {
+    private static double powerHelper(int base, int exponent) {
         if (exponent == 0) {
             return 1;
         } else if (exponent > 0) {
             return base * powerHelper(base, exponent - 1);
         } else {
-            return 1 / powerHelper(base, -exponent);
+            return 1.0 / powerHelper(base, -exponent);
         }
     }
 
@@ -46,8 +46,10 @@ public class Recursion {
     private static int counterHelper(int n) {
         if (n == 0) {
             return 0;
-        } else {
+        } else if (n > 0) {
             return n + counterHelper(n - 1);
+        } else {
+            return n + counterHelper(n + 1);
         }
     }
 
@@ -57,12 +59,20 @@ public class Recursion {
     }
 
     private static int counterEvenHelper(int n) {
-        if (n <= 0) {
+        if (n == 0) {
             return 0;
-        } else if (n % 2 == 0) {
-            return n + counterEvenHelper(n - 2);
+        } else if (n > 0) {
+            if (n % 2 == 0) {
+                return n + counterEvenHelper(n - 2);
+            } else {
+                return counterEvenHelper(n - 1);
+            }
         } else {
-            return counterEvenHelper(n - 1);
+            if (n % 2 == 0) {
+                return n + counterEvenHelper(n + 2);
+            } else {
+                return counterEvenHelper(n + 1);
+            }
         }
     }
 
@@ -72,12 +82,20 @@ public class Recursion {
     }
 
     private static int counterOddHelper(int n) {
-        if (n <= 0) {
+        if (n == 0) {
             return 0;
-        } else if (n % 2 != 0) {
-            return n + counterOddHelper(n - 2);
+        } else if (n > 0) {
+            if (n % 2 != 0) {
+                return n + counterOddHelper(n - 2);
+            } else {
+                return counterOddHelper(n - 1);
+            }
         } else {
-            return counterOddHelper(n - 1);
+            if (n % 2 != 0) {
+                return n + counterOddHelper(n + 2);
+            } else {
+                return counterOddHelper(n + 1);
+            }
         }
     }
 }
