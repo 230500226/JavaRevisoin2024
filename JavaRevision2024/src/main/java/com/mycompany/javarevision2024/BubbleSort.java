@@ -30,10 +30,8 @@ class BubbleSort {
             }
         }
     }
-}
 
-public class MainClass {
-    public static void main(String[] args) {
+    public static void start(String[] args) {
         int[] randomArray = generateRandomArray(10, 10, 99);
         System.out.println("Original array:");
         printArray(randomArray);
@@ -61,3 +59,4 @@ public class MainClass {
         System.out.println();
     }
 }
+
